@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+    <title>Canvas</title>
+  </head>
+  <body>
+    <header></header>
+    <div class="wrapper">
+      <div class="container">
+        <section class="tools-board">
+          <div class="row">
+            <label for="" class="title">Форма</label>
+            <ul class="options">
+              <li class="option tool" id="rectangle">
+                <img src="icons/rectangle.svg" alt="rectangle" />
+                <span>Прямоугольник</span>
+              </li>
+              <li class="option tool" id="circle">
+                <img src="icons/circle.svg" alt="circle" />
+                <span>Круг</span>
+              </li>
+              <li class="option tool" id="triangle">
+                <img src="icons/triangle.svg" alt="" />
+                <span>Треугольник</span>
+              </li>
+              <li class="option" id="fill-option">
+                <input type="checkbox" id="fill-color" />
+                <label for="fill-color">Заливка</label>
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <label for="" class="title">Опции</label>
+            <ul class="options">
+              <li class="option tool active" id="brush">
+                <img src="icons/brush.svg" alt="" />
+                <span>Кисть</span>
+              </li>
+              <li class="option tool" id="eraser">
+                <img src="icons/eraser.svg" alt="" />
+                <span>Ластик</span>
+              </li>
+
+              <li class="option">
+                <input
+                  type="range"
+                  id="size-slider"
+                  min="1"
+                  max="50"
+                  value="2"
+                />
+              </li>
+            </ul>
+          </div>
+
+          <div class="row colors">
+            <label for="" class="title">Цвета</label>
+            <ul class="options">
+              <li class="option"></li>
+              <li class="option selected"></li>
+              <li class="option"></li>
+              <li class="option"></li>
+              <li class="option"></li>
+              <li class="option">
+                <input type="color" id="color-picker" value="#fad78b" />
+              </li>
+            </ul>
+          </div>
+          <div class="row buttons">
+            <button id="clear-canvas" data="Очистить"></button>
+            <button id="save-img">
+              <div class="shadow__wrapper">
+                <div class="button__shadow"></div>
+              </div>
+              <div class="button__content">
+                <span class="button__text">Сохранить</span>
+                <div class="button__shape-1 shape"></div>
+                <div class="button__shape-2 shape"></div>
+                <div class="button__shape-3 shape"></div>
+                <div class="button__shape-4 shape"></div>
+              </div>
+            </button>
+          </div>
+        </section>
+        <section class="drawing-board">
+          <canvas></canvas>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
