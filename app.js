@@ -1,12 +1,20 @@
 const canvas = document.querySelector("canvas"),
+  header = document.querySelector("#header"),
+  toolsBoard = document.querySelector(".tools-board"),
   ctx = canvas.getContext("2d"),
   fillColor = document.querySelector("#fill-color"),
   toolBtns = document.querySelectorAll(".tool"),
   colorBtns = document.querySelectorAll(".colors .option"),
+  colorsNav = document.querySelector(".row.colors .options"),
   colorPicker = document.querySelector("#color-picker"),
+  figureNavOpen = document.querySelector(".row.figures .options"),
   clearCanvas = document.querySelector("#clear-canvas"),
   saveImg = document.querySelector("#save-img"),
-  sizeSlider = document.querySelector("#size-slider");
+  sizeSlider = document.querySelector("#size-slider"),
+  figureNav = document.querySelector(".row.figures"),
+  navFigureIcon = document.querySelector("#figure-icon"),
+  navFigureIconImg = document.querySelector("#figure-icon-img"),
+  openColorBarBtn = document.querySelector("#picked-color");
 
 let prevMouseX,
   prevMouseY,
@@ -103,8 +111,15 @@ const drawing = (e) => {
 toolBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     document.querySelector(".options .active").classList.remove("active");
+    document.querySelector("#figure-icon-img").classList.remove("active");
     btn.classList.add("active");
     selectedTool = btn.id;
+    console.log(btn.classList);
+
+    if (btn.classList.contains("figure")) {
+      changeFigure(btn.id);
+      document.querySelector("#figure-icon-img").classList.add("active");
+    }
   });
 });
 
@@ -117,6 +132,7 @@ colorBtns.forEach((btn) => {
     selectedColor = window
       .getComputedStyle(btn)
       .getPropertyValue("background-color");
+    openColorBarBtn.style.backgroundColor = selectedColor;
   });
 });
 
@@ -140,33 +156,6 @@ canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
 canvas.addEventListener("mouseup", () => (isDrawing = false));
 
-document.body.addEventListener(
-  "touchstart",
-  function (e) {
-    if (e.target == canvas) {
-      e.preventDefault();
-    }
-  },
-  false
-);
-document.body.addEventListener(
-  "touchend",
-  function (e) {
-    if (e.target == canvas) {
-      e.preventDefault();
-    }
-  },
-  false
-);
-document.body.addEventListener(
-  "touchmove",
-  function (e) {
-    if (e.target == canvas) {
-      e.preventDefault();
-    }
-  },
-  false
-);
 canvas.addEventListener(
   "touchstart",
   function (e) {
@@ -209,3 +198,42 @@ function getTouchPos(canvasDom, touchEvent) {
     y: touchEvent.touches[0].clientY - rect.top,
   };
 }
+
+const changeFigure = (iconName) => {
+  navFigureIcon.innerHTML = `<img id='figure-icon-img' src='icons/${iconName}.svg' alt=''  />`;
+};
+
+const openNavFigures = (e) => {
+  if (figureNavOpen.style.display === "block")
+    figureNavOpen.style.display = "none";
+  else {
+    figureNavOpen.style.display = "block";
+  }
+};
+navFigureIcon.addEventListener("click", openNavFigures);
+
+const navigationShow = (e) => {
+  if (window.innerWidth <= 850) {
+    if (
+      toolsBoard.style.display === "flex" ||
+      toolsBoard.style.display === ""
+    ) {
+      toolsBoard.style.display = "none";
+    } else {
+      toolsBoard.style.display = "flex";
+    }
+  }
+};
+header.addEventListener("click", navigationShow);
+
+const openColorBar = (e) => {
+  console.log(colorBtns);
+  if (window.innerWidth <= 850) {
+    if (colorsNav.style.display === "flex" || colorsNav.style.display === "") {
+      colorsNav.style.display = "none";
+    } else {
+      colorsNav.style.display = "flex";
+    }
+  }
+};
+openColorBarBtn.addEventListener("click", openColorBar);
