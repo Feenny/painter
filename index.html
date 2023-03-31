@@ -9,22 +9,25 @@
     <title>Canvas</title>
   </head>
   <body>
-    <header></header>
+    <header id="header"></header>
     <div class="wrapper">
       <div class="container">
         <section class="tools-board">
-          <div class="row">
+          <div class="row figures">
+            <div id="figure-icon">
+              <img id="figure-icon-img" src="icons/rectangle.svg" alt="" />
+            </div>
             <label for="" class="title">Форма</label>
             <ul class="options">
-              <li class="option tool" id="rectangle">
+              <li class="option tool figure" id="rectangle">
                 <img src="icons/rectangle.svg" alt="rectangle" />
                 <span>Прямоугольник</span>
               </li>
-              <li class="option tool" id="circle">
+              <li class="option tool figure" id="circle">
                 <img src="icons/circle.svg" alt="circle" />
                 <span>Круг</span>
               </li>
-              <li class="option tool" id="triangle">
+              <li class="option tool figure" id="triangle">
                 <img src="icons/triangle.svg" alt="" />
                 <span>Треугольник</span>
               </li>
@@ -34,7 +37,7 @@
               </li>
             </ul>
           </div>
-          <div class="row">
+          <div class="row tools">
             <label for="" class="title">Опции</label>
             <ul class="options">
               <li class="option tool active" id="brush">
@@ -59,14 +62,15 @@
           </div>
 
           <div class="row colors">
+            <span id="picked-color"></span>
             <label for="" class="title">Цвета</label>
             <ul class="options">
-              <li class="option"></li>
-              <li class="option selected"></li>
-              <li class="option"></li>
-              <li class="option"></li>
-              <li class="option"></li>
-              <li class="option">
+              <li class="color option"></li>
+              <li class="color option selected"></li>
+              <li class="color option"></li>
+              <li class="color option"></li>
+              <li class="color option"></li>
+              <li class="color option">
                 <input type="color" id="color-picker" value="#fad78b" />
               </li>
             </ul>
