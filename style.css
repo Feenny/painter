@@ -404,12 +404,11 @@ label.title {
   .container {
     padding: 0;
     flex-direction: column;
-    width: 100%;
     height: 100%;
   }
-  .wrapper {
-  }
+
   .tools-board {
+    border-right: none;
     position: absolute;
     border-radius: 0;
     background: #484848;
@@ -498,7 +497,6 @@ label.title {
     position: absolute;
     z-index: 1;
     top: 55px;
-    /* display: none; */
   }
   .row.figures .options .option {
     justify-content: center;
@@ -555,9 +553,7 @@ label.title {
     width: 35px;
     height: 35px;
   }
-  .colors .options .option:not(:first-child) {
-    /* display: none; */
-  }
+
   .colors .option.selected::before {
     position: absolute;
     content: "";
